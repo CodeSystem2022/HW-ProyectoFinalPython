@@ -1,69 +1,42 @@
 class Viaje:
-    def __init__(self):
-        self.destino = ""
-        self.precio = 0
-
-def espacio():
-    print("\n\n\n\n\n\n\n\n\n\n")
+    def __init__(self, destino, precio, adicional):
+        self.destino = destino
+        self.precio = precio
+        self.adicional = adicional
 
 def definirDestino():
-    viaje = Viaje()
+    print("-----------------------------------------------------------")
+    print("                 DESTINOS TURISTICOS SAN RAFAEL            ")
+    print("-----------------------------------------------------------")
+    print("                       1 - Valle Grande                    ")
+    print("                       2 - Los Reyunos                     ")
+    print("          3 - El Nihuil y Las Salinas del Diamante         ")
+    print("                       4 - El Sosneado                     ")
 
-    while True:
-        print("-----------------------------------------------------------")
-        print("                 DESTINOS TURISTICOS SAN RAFAEL            ")
-        print("-----------------------------------------------------------")
-        print("                       1 - Valle Grande                    ")
-        print("                       2 - Los Reyunos                     ")
-        print("          3 - El Nihuil y Las Salinas del Diamante         ")
-        print("                       4 - El Sosneado                     ")
+    num = int(input("Seleccione el número correspondiente al destino deseado: "))
 
-        num = int(input())
+    if num == 1:
+        destino = "Valle Grande"
+        precio = 18000
+    elif num == 2:
+        destino = "Los Reyunos"
+        precio = 2000
+    elif num == 3:
+        destino = "El Nihuil y Las Salinas del Diamante"
+        precio = 2500
+    elif num == 4:
+        destino = "El Sosneado"
+        precio = 3300
+    else:
+        print("El número seleccionado es incorrecto.")
+        return None
 
-        if num == 1:
-            viaje.destino = "Valle Grande"
-            viaje.precio = 1800
-            print("El destino seleccionado es:", viaje.destino)
-            print("Precio = $", viaje.precio)
-            espacio()
-            #servicioAdicional()
-            espacio()
-            break
-        elif num == 2:
-            viaje.destino = "Los Reyunos"
-            viaje.precio = 2000
-            print("El destino seleccionado es:", viaje.destino)
-            print("Precio = $", viaje.precio)
-            espacio()
-            #servicioAdicional()
-            espacio()
-            break
-        elif num == 3:
-            viaje.destino = "El Nihuil y Las Salinas del Diamante"
-            viaje.precio = 2500
-            print("El destino seleccionado es:", viaje.destino)
-            print("Precio = $", viaje.precio)
-            espacio()
-            #servicioAdicional()
-            espacio()
-            break
-        elif num == 4:
-            viaje.destino = "El Sosneado"
-            viaje.precio = 3300
-            print("El destino seleccionado es:", viaje.destino)
-            print("Precio = $", viaje.precio)
-            espacio()
-            #servicioAdicional()
-            espacio()
-            break
-        else:
-            print("Los datos ingresados son incorrectos")
-    return viaje
-def main():
-    definirDestino()
-main()
+    return Viaje(destino, precio, "")
 
+viaje = definirDestino()
 
-
+if viaje:
+    print("Destino seleccionado:", viaje.destino)
+    print("Precio:", viaje.precio)
 
 
