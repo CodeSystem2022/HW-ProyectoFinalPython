@@ -22,7 +22,7 @@ def definirDestino():
 
         if num == 1:
             viaje.destino = "Valle Grande"
-            viaje.precio = 1800
+            viaje.precio = 2800
             print("El destino seleccionado es:", viaje.destino)
             print("Precio = $", viaje.precio)
             espacio()
@@ -31,7 +31,7 @@ def definirDestino():
             break
         elif num == 2:
             viaje.destino = "Los Reyunos"
-            viaje.precio = 2000
+            viaje.precio = 2800
             print("El destino seleccionado es:", viaje.destino)
             print("Precio = $", viaje.precio)
             espacio()
@@ -40,7 +40,7 @@ def definirDestino():
             break
         elif num == 3:
             viaje.destino = "El Nihuil y Las Salinas del Diamante"
-            viaje.precio = 2500
+            viaje.precio = 3500
             print("El destino seleccionado es:", viaje.destino)
             print("Precio = $", viaje.precio)
             espacio()
@@ -49,7 +49,7 @@ def definirDestino():
             break
         elif num == 4:
             viaje.destino = "El Sosneado"
-            viaje.precio = 3300
+            viaje.precio = 4300
             print("El destino seleccionado es:", viaje.destino)
             print("Precio = $", viaje.precio)
             espacio()
