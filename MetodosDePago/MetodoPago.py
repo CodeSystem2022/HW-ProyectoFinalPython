@@ -1,6 +1,7 @@
 import random
 import time
 import datetime
+import DestinosMasAdicionales
 
 
 def mostrar_numero_dia():
@@ -18,7 +19,7 @@ class MetodoPago:
         self._numTarjeta = numTarjeta
         self._codTarjeta = codTarjeta
 
-    precio = 200
+    precio = DestinosMasAdicionales.calcularPrecioTotal(DestinosMasAdicionales.viaje)
 
     def __str__(self):
         return f'''
@@ -82,6 +83,7 @@ class MetodoPago:
 metodoPago = MetodoPago(0.8, 1.15, 1.25)
 numero_aleatorio = random.randint(1000000000000, 9999999999999)
 while True:
+    time.sleep(2)
     print("..:Ingresar medio de pago:..")
     time.sleep(0.5)
     print("1. Pago contado (20% de descuento)")
@@ -96,15 +98,17 @@ while True:
         print(f"El precio total de contado es de: {metodoPago.precio_descuento():.2f} pesos")
         print("Generando código de pago")
         time.sleep(3)
-        print(f"Su código de pago es: {numero_aleatorio}, por favor diríjase a su RapiPago más cercano para "
+        print(f"Su código de pago es: {numero_aleatorio}, por favor diríjase a su   RapiPago más cercano para "
               f"concretar la compra")
         break
     elif Opcion == 2:
+        time.sleep(1.5)
         print(f"El precio total con tarjeta es de: {metodoPago.precio_tarjeta_total():.2f} pesos")
         print(f"En doce cuotas de: {metodoPago.precio_tarjeta_cuota():.2f} pesos")
-        metodoPago.nombreUsuario = input("Ingrese el nombre del titular de la tarjeta: ")
+        metodoPago.nombreUsuario = input("Digite nombre y apellido del titular de la tarjeta: ")
         metodoPago.numTarjeta = int(input("Digite el número de la tarjeta: "))
         metodoPago.codTarjeta = int(input("Digite el código de la tarjeta: "))
+        time.sleep(1)
         print(f"Usted ingresó los siguientes datos: {metodoPago.__str__()}")
         while True:
             print("Desea confirmar la compra?")
