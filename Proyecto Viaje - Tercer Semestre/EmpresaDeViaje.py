@@ -351,3 +351,71 @@ class Viaje:
 
     def __str__(self):
         return (self._precio + self._adicionales)
+
+############################################################
+############################################################
+"""
+        Clase que contiene los atributos para poder instanciar un objeto de tipo servicios.
+        Atributos:
+        - Adicional: se podrá elegir que servicio adicional se desea
+        - mostrarresultado: se mostrará el costo total del viaje sumado con el servicio adicional
+"""
+class Servicios:
+    viaje = Viaje('', 0, 0)
+    servicioCombi = ServicioCombiSeleccion()
+
+   def nombreEmpresa(self): """Esto muestra Logo del proyecto"""
+    import pyfiglet
+    print(pyfiglet.figlet_format("Hello World \n TOURS"))
+
+   def espacio(self):  """Genera espacio entre el logo y el siguiente método"""
+    print("\n\n\n\n")
+
+  """Se consulta si se desea un Servicio Adicional"""
+   def servicioAdicional(self, viaje):
+    opcion = 0
+    while True:
+        print("¿Desea agregar algún servicio adicional?")
+        print("                   1-SI                 ")
+        print("                   2-NO                 ")
+        opcion = int(input()) """El usuario deberá elegir una opción"""
+        if opcion == 1:
+            while True:
+                print("       Seleccione una opción: ")
+                print("1 - Búsqueda por alojamiento: $350")
+                print("2 - Vianda en destino: $500")
+                print("3 - Pack Souvenir: $850")
+                print("4 - No deseo ningún adicional.")
+
+                opcion = int(input())
+                if opcion == 1:
+                    self.viaje.Adicionales = self.viaje.Adicionales + 350
+                    break
+                elif opcion == 2:
+                    self.viaje.Adicionales = self.viaje.Adicionales + 500
+                    break
+                elif opcion == 3:
+                    self.viaje.Adicionales = self.viaje.Adicionales + 850
+                    break
+                elif opcion == 4:
+                    continue
+                else:
+                    print("La opción ingresada es incorrecta.")
+        elif opcion != 1 and opcion != 2:
+            print("Los datos ingresados son incorrectos.")
+            print("Por favor, intente nuevamente.")
+        else:
+            break
+
+         """ Mostrar pantalla: mostrará los resultados por pantalla"""
+    def mostrarResultado(self, viaje):
+        suma = self.viaje.Precio + self.viaje.Adicionales
+        print("************************************************")
+        print("El destino seleccionado es: " + self.viaje.Destino)
+        print("************************************************")
+        print("El precio es: $" + str(self.viaje.Precio))
+        print("************************************************")
+        print("El costo adicional seleccionado es: $" + str(self.viaje.Adicionales))
+        print("************************************************")
+        print(f"El valor total del viaje es: $" + str(suma))
+
