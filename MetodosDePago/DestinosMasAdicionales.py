@@ -14,7 +14,7 @@ class Viaje:
     def __init__(self, destino, precio, adicionales):
         self.destino = destino
         self.precio = precio
-        self.adicionales = adicionales
+        self.adicionales = adicionales1
 
 
 def definirDestino():

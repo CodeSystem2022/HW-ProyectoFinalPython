@@ -468,8 +468,6 @@ class Servicios:
         print("\t\t\t\t     Precio: $ " + str(self.viaje.Precio + self.viaje.Adicionales))
         print("")
 
-    #####################
-
 
     def metodoDePago(self):
         opcionDePago = 0
@@ -528,3 +526,4 @@ class Servicios:
     def compraExitosa(self):  # Mensaje de confirmación de compra
         print("Tú compra fue un éxito.")
         print("Esperamos disfrutes tú viaje.")
+
