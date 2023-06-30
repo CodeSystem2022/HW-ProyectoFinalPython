@@ -1,6 +1,6 @@
 # from typing import List, Tuple, Any
 import psycopg2 as bd
-import pyfiglet
+
 
 class CombiSeleccion:
     """
@@ -351,6 +351,7 @@ class Viaje:
 
     def __str__(self):
         return (self._precio + self._adicionales)
+
 ############################################################
 ############################################################
 """
@@ -364,6 +365,7 @@ class Servicios:
     servicioCombi = ServicioCombiSeleccion()
 
    def nombreEmpresa(self): """Esto muestra Logo del proyecto"""
+    import pyfiglet
     print(pyfiglet.figlet_format("Hello World \n TOURS"))
 
    def espacio(self):  """Genera espacio entre el logo y el siguiente método"""
@@ -416,3 +418,4 @@ class Servicios:
         print("El costo adicional seleccionado es: $" + str(self.viaje.Adicionales))
         print("************************************************")
         print(f"El valor total del viaje es: $" + str(suma))
+
