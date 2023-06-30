@@ -31,15 +31,31 @@ def definirDestino():
     if num == 1:
         destino = "Valle Grande"
         precio = 18000
+        self.espacio()
+        self.servicioAdicional()
+        self.espacio()
+        self.mostrarResultado(viaje)
     elif num == 2:
         destino = "Los Reyunos"
         precio = 20000
+        self.espacio()
+        self.servicioAdicional()
+        self.espacio()
+        self.mostrarResultado(viaje)
     elif num == 3:
         destino = "El Nihuil y Las Salinas del Diamante"
         precio = 25000
+        self.espacio()
+        self.servicioAdicional()
+        self.espacio()
+        self.mostrarResultado(viaje)
     elif num == 4:
         destino = "El Sosneado"
         precio = 33000
+        self.espacio()
+        self.servicioAdicional()
+        self.espacio()
+        self.mostrarResultado(viaje)
     else:
         print("El número seleccionado es incorrecto.")
         return None
@@ -107,7 +123,7 @@ if viaje:
 
     precio_total = calcularPrecioTotal(viaje)
     print("Precio total del viaje:$", precio_total)
-
+####################################################################
 numero_aleatorio = random.randint(1000000000000, 9999999999999)
 metodoPago = MetodoPago(0.8, 1.15, 1.25)
 metodoPago.precio = precio_total
