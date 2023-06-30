@@ -178,9 +178,9 @@ class ServicioCombiSeleccion:
 
     def elegirAsientoDisponible1(self):
         # Pedir al usuario que elija un asiento
-        """
-        Permite al usuario elegir un asiento disponible en la combi 1.
-        """
+
+        """Permite al usuario elegir un asiento disponible en la combi 1."""
+
         while True:
             self.seleccion.Asiento = input("Ingrese el número del asiento que desea ocupar: ")
 
@@ -419,3 +419,53 @@ class Servicios:
         print("************************************************")
         print(f"El valor total del viaje es: $" + str(suma))
 
+
+    '''Damos inicio a la confirmación de compra del pasaje por porte del usuario o la opcion de volver atras, con el método comprarBoleto'''
+    def comprarBoleto(self, viaje):
+        self.espacio()
+        print("Bienvenido al sistema de compra de pasajes")
+        print(" ")
+    # Usuario define si compra boleto o no
+        opcion = 0
+        while opcion != 1 and opcion != 2:
+            print("1_ Comprar Boleto")
+            print("2_ Volver")
+            opcion = int(input())
+    #En caso de confirmar la compra
+        if opcion == 1:
+            self.servicioCombi.seleccionFinal()
+        else:
+            self.definirDestino()
+
+        if self.viaje.Destino == "Valle Grande":
+            self.mostrarPantalla(self.viaje.Destino, 8, 8, 16, "Julio", 40, self.servicioCombi.retornaAsiento())
+        elif self.viaje.Destino == "Los Reyunos":
+            self.mostrarPantalla(self.viaje.Destino, 8, 9, 17, "Julio", 50, self.servicioCombi.retornaAsiento())
+        elif self.viaje.Destino == "El Nihuil y Las Salinas del Diamante":
+            self.mostrarPantalla(self.viaje.Destino, 8, 10, 18, "Julio", 40, self.servicioCombi.retornaAsiento())
+        elif self.viaje.Destino == "El Sosneado":
+            self.mostrarPantalla(self.viaje.Destino, 8, 11, 19, "Julio", 40, self.servicioCombi.retornaAsiento())  ####
+
+    #Imprime por pantalla los datos que contiene el boleto de compra
+    def mostrarPantalla(self, viaje, horarioSalida, horarioLlegada, dia, mes, duracion, serrvicioCombi):
+        print("")
+        print("")
+        print("\t\t\t\t\t\tOpción: ")
+        print("\t\t\t\t\t\t" + self.viaje.Destino + " ")
+        print("\t\t\t\t\tINFORMACION DEL TUR: ")
+        print("\t\t\t--------------------------------------------------")
+        print("\t\t\t\t\tDestino:   " + self.viaje.Destino + " ")
+        print("\t\t\t\t\tCombi: Combi Nº" + str(self.servicioCombi.retornaCombi()) + " ")
+        print("\t\t\t\t\tAsiento:    " + str(self.servicioCombi.retornaAsiento()) + " ")
+        print("\t\t\t---------------------------------------------------")
+        print("\t\t\t   --------------------     -------------------- ")
+        print("\t\t\t\t  SALIDA                   LLEGADA")
+        print("\t\t\t  Lunes " + str(dia) + " de " + mes + "             Lunes " + str(dia) + " de " + mes + " ")
+        print("\t\t\t\t" + str(horarioSalida) + ":00    hs               " + str(horarioLlegada) + ":" + str(
+            duracion) + "   hs ")
+        print("\t\t\t   --------------------     -------------------- ")
+        print("\t\t\t\t   [Duración Viaje:" + str(duracion) + " min.] ")
+        print("\t\t\t\t     Precio: $ " + str(self.viaje.Precio + self.viaje.Adicionales))
+        print("")
+
+    #####################
