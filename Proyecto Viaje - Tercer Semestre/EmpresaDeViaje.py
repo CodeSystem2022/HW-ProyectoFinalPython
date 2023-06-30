@@ -468,4 +468,62 @@ class Servicios:
         print("\t\t\t\t     Precio: $ " + str(self.viaje.Precio + self.viaje.Adicionales))
         print("")
 
-    #####################
+
+    def metodoDePago(self):
+        opcionDePago = 0
+
+        while opcionDePago not in [1, 2, 3]:  # Ciclo While. Muestra el menú hasta que se coloque una opción correcta
+            print("..:Ingresar medio de pago:..")
+            print("1. Pago contado (20% de descuento)")
+            print("2. Tarjeta en 12 cuotas (15% de recargo)")
+            print("3. Financiado en 6 cuotas (25% recargo)")
+            opcionDePago = int(input("Digite una opción entre 1 y 3: "))
+            # Cálculo de precio total con descuento del 20%
+            if opcionDePago == 1:
+                print("El precio total de contado es:", (self.viaje.Precio + self.viaje.Adicionales) * 0.8,
+                      "pesos")
+            # Cálculo de precio total con recargo del 15%
+            elif opcionDePago == 2:
+                precioTotal = (self.viaje.Precio + self.viaje.Adicionales) * 1.15
+                print(f"El precio total con tarjeta es: {precioTotal:.2f} pesos")
+                print(f"Seis cuotas de {precioTotal / 6:.2f} pesos")
+                self.espacio()
+                self.opcionTarjeta()
+            # Cálculo de precio total con financiado de la casa con recargo del 25%
+            elif opcionDePago == 3:
+                precioTotal = (self.viaje.Precio + self.viaje.Adicionales) * 1.25
+                print(f"El precio total con financiado de la casa es: {precioTotal:.2f} pesos")
+                print(f"Doce cuotas de {precioTotal / 12:.2f} pesos")
+            # Mensaje en caso de que la opcion ingresada no sea 1, 2 o 3
+            else:
+                print("|---------------------|")
+                print("|Número fuera de rango|")
+                print("|---------------------|")
+
+        self.espacio()
+        self.compraExitosa()
+
+
+    def opcionTarjeta(self):  # Método para que el usuario ingrese los datos de su tarjeta para realizar el pago
+        titular = ""
+        numeroTarjeta = ""
+        numeroCV = 0
+        # Se solicitan los datos
+        print("Ingrese el nombre completo del titular de la tarjeta: ")
+        while len(titular) < 3:
+            titular = input()
+
+        print("Ingrese el número de la tarjeta: ")
+        numeroTarjeta = input()
+
+        print("Ingrese el CV de la tarjeta: ")
+        numeroCV = int(input())
+        # Se muestran los datos ingresados en pantalla
+        print("Sus datos son: Titular:", titular + ", Número de tarjeta:", numeroTarjeta + ", CV de la tarjeta:",
+              numeroCV)
+
+
+    def compraExitosa(self):  # Mensaje de confirmación de compra
+        print("Tú compra fue un éxito.")
+        print("Esperamos disfrutes tú viaje.")
+
