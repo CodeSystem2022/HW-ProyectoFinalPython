@@ -205,3 +205,149 @@ class ServicioCombiSeleccion:
             else:
                 print("El asiento seleccionado no está disponible. Por favor, elija otro asiento.")
 
+    # Método para verificar que el asiento seleccionado
+    # se encuentre disponible.
+    def validarAsientoDisponible(self, seleccion):
+        if self.seleccion.Asiento == 'x':
+            return False
+
+        # Verificar si el asiento está disponible en la matriz
+        for fila in self.matriz:
+            for valor in fila:
+                if valor == self.seleccion.Asiento:
+                    return True
+        return False
+
+    #Método para la selección de asiento dirigido a la base de datos viajes_db(combi1)
+    def seleccionarAsiento1BD(self, seleccion):
+        conexion = bd.connect(
+            user='postgres',
+            password='admin',
+            host='127.0.0.1',
+            port='5432',
+            database='viajes_bd'
+        )
+        # Inicia la conexión y envia una sentencia que guarda los datos del usuario.
+        try:
+            conexion.autocommit = False
+            cursor = conexion.cursor()
+            nombre = input("Ingrese su nombre: ")
+            apellido = input("Ingrese su apellido: ")
+            dni = input("Ingrese su DNI: ")
+            sentencia = "UPDATE combi1 SET nombre = %s, apellido = %s, dni = %s, estado = %s WHERE id_asiento = %s "
+            valores = (nombre, apellido, dni, 'ocupado', self.seleccion.Asiento)
+            cursor.execute(sentencia, valores)
+            conexion.commit()  # Hacemos el commit manualmente
+            registros_actualizados = cursor.rowcount
+            print(f'Los registros actualizados son: {registros_actualizados}')
+            print('Termina la transacción')
+        except Exception as e:
+            conexion.rollback()
+            print(f'Ocurrio un error, se hizo un rollback: {e}')
+        finally:
+            conexion.close()
+
+    # Método para la selección de asiento dirigido a la base de datos viajes_db(combi2)
+    def seleccionarAsiento2BD(self, seleccion):
+        conexion = bd.connect(
+            user='postgres',
+            password='admin',
+            host='127.0.0.1',
+            port='5432',
+            database='viajes_bd'
+        )
+        # Inicia la conexión y envia una sentencia que guarda los datos del usuario.
+        try:
+            conexion.autocommit = False
+            cursor = conexion.cursor()
+            nombre = input("Ingrese su nombre: ")
+            apellido = input("Ingrese su apellido: ")
+            dni = input("Ingrese su DNI: ")
+            sentencia = "UPDATE combi2 SET nombre = %s, apellido = %s, dni = %s, estado = %s WHERE id_asiento = %s "
+            valores = (nombre, apellido, dni, 'ocupado', self.seleccion.Asiento)
+            cursor.execute(sentencia, valores)
+            conexion.commit()  # Hacemos el commit manualmente
+            registros_actualizados = cursor.rowcount
+            print(f'Los registros actualizados son: {registros_actualizados}')
+            print('Termina la transacción')
+        except Exception as e:
+            conexion.rollback()
+            print(f'Ocurrio un error, se hizo un rollback: {e}')
+        finally:
+            conexion.close()
+
+    # Selecciona los métodos a utilizar según la combi seleccionada por el usuario.
+    def seleccionFinal(self):
+
+        while True:
+            self.generarMatrizCombi1()
+            self.generarMatrizCombi2()
+            combi = input("Ingresa un número (1 o 2): ")
+
+            if combi == '1':
+                self.seleccion.Combi = 1
+                self.generarMatrizCombi1()
+                self.elegirAsientoDisponible1()
+                break
+            elif combi == '2':
+                self.seleccion.Combi = 2
+                self.generarMatrizCombi2()
+                self.elegirAsientoDisponible2()
+                break
+            else:
+                print('Ingresar un número válido')
+
+    # retornarAsiento y retornarCombi solo retornarán los valores
+    # contenidos en las propiedades asiento y combi.
+    def retornaAsiento(self):
+        return self.seleccion.Asiento
+
+    def retornaCombi(self):
+        return self.seleccion.Combi
+
+#######################################################################
+#######################################################################
+
+"""
+        Clase que contiene los atributos para poder instanciar un objeto de tipo Viaje.
+        Atributos:
+        - destino: se ingresará el valor del destino seleccionado.
+        - precio: se ingresará el valor del  precio según el destino.
+        - adicional: se ingresará el valor del los adicionales que se agreguen al viaje.
+        """
+
+class Viaje:
+    def __init__(self, destino, precio, adicionales):
+        self._destino = destino
+        self._precio = precio
+        self._adicionales = adicionales
+
+    """
+       Getter and Setter
+    """
+    @property
+    def Destino(self):
+        return self._destino
+
+    @Destino.setter
+    def Destino(self, destino):
+        self._destino = destino
+
+    @property
+    def Precio(self):
+        return self._precio
+
+    @Precio.setter
+    def Precio(self, precio):
+        self._precio = precio
+
+    @property
+    def Adicionales(self):
+        return self._adicionales
+
+    @Adicionales.setter
+    def Adicionales(self, adicionales):
+        self._adicionales = adicionales
+
+    def __str__(self):
+        return (self._precio + self._adicionales)
