@@ -527,3 +527,80 @@ class Servicios:
         print("Tú compra fue un éxito.")
         print("Esperamos disfrutes tú viaje.")
 
+###########
+    #Este metodo permite al usuario seleccionar un destino turistico
+    #Metodo dentro de la clase Servicios
+    def definirDestino(self):
+        #Se utiliza un bucle While True para mantener al usuario en el menù
+        #hasta que ingrese una opcion valida
+        while True:
+            print("-----------------------------------------------------------")
+            print("|              DESTINOS TURISTICOS SAN RAFAEL              |")
+            print("-----------------------------------------------------------")
+            print("|   Opción   |           Destino             |   Precio    |")
+            print("-----------------------------------------------------------")
+            print("|     1      |         Valle Grande          |    2800     |")
+            print("|     2      |         Los Reyunos           |    3200     |")
+            print("|     3      |  El Nihuil y Las Salinas del  |    3500     |")
+            print("|            |          Diamante             |             |")
+            print("|     4      |         El Sosneado           |    4300     |")
+            print("-----------------------------------------------------------")
+        #menù de Destinos turisticos
+            num = int(input("Seleccione el número correspondiente al destino deseado: "))
+            #seleccion de el número que elige el usuario.
+            if num == 1:
+                self.viaje.Destino = "Valle Grande"
+                self.viaje.Precio = 2800
+                print("El destino seleccionado es:", self.viaje.Destino)
+                print("Precio = $", self.viaje.Precio)
+                self.espacio()
+                self.servicioAdicional(viaje)
+                self.espacio()
+                self.mostrarResultado(viaje)
+                break
+            elif num == 2:
+                self.viaje.Destino = "Los Reyunos"
+                self.viaje.Precio = 3200
+                print("El destino seleccionado es:", self.viaje.Destino)
+                print("Precio = $", self.viaje.Precio)
+                self.espacio()
+                self.servicioAdicional(viaje)
+                self.espacio()
+                self.mostrarResultado(viaje)
+                break
+            elif num == 3:
+                self.viaje.Destino = "El Nuhuil y Las Salinas del Diamante"
+                self.viaje.Precio = 3500
+                print("El destino seleccionado es:", self.viaje.Destino)
+                print("Precio = $", self.viaje.Precio)
+                self.espacio()
+                self.servicioAdicional(viaje)
+                self.espacio()
+                self.mostrarResultado(viaje)
+                break
+            elif num == 4:
+                self.viaje.Destino = "El Sosneado"
+                self.viaje.Precio = 4300
+                print("El destino seleccionado es:", self.viaje.Destino)
+                print("Precio = $", self.viaje.Precio)
+                self.espacio()
+                self.servicioAdicional(viaje)
+                self.espacio()
+                self.mostrarResultado(viaje)
+                #caso que elija una de las 4 opciones mostrara el resultado
+                #del destino seleccionado y el precio.
+                break
+            else:
+                print("Los datos ingresados son incorrectos")
+            #Fin de la Estructura Condicional
+        # return viaje
+        self.comprarBoleto(viaje)
+        self.espacio()
+        self.metodoDePago()
+
+
+
+viaje = Servicios()
+viaje.nombreEmpresa()
+viaje.espacio()
+viaje.definirDestino()
