@@ -15,6 +15,7 @@ class CombiSeleccion:
         - fila_actual: Lista que representa la fila actual en la construcción de la matriz.
         - contador_columnas: Contador de columnas utilizado en la construcción de la matriz.
         """
+
     def __init__(self, combi, asiento, nombre=None, apellido=None, dni=None):
         """
         Inicializa una instancia de la clase CombiSeleccion.
@@ -38,6 +39,7 @@ class CombiSeleccion:
     """
     Getter and Setter para el número de la combi.
     """
+
     @property
     def Combi(self):
         return self._combi
@@ -54,8 +56,9 @@ class CombiSeleccion:
     def Asiento(self, asiento):
         self._asiento = asiento
 
-#######################################################################
-#######################################################################
+
+##################################################################################################
+##################################################################################################
 
 class ServicioCombiSeleccion:
     """
@@ -65,22 +68,22 @@ class ServicioCombiSeleccion:
     - seleccion: Instancia de la clase CombiSeleccion utilizada para almacenar la selección actual.
     """
 
-    seleccion = CombiSeleccion(0,0)
+    seleccion = CombiSeleccion(0, 0)
 
     def generarMatrizCombi1(self):
-     """
-    Se Establece la conexión con la base de datos
-    El código utiliza la biblioteca psycopg2 para establecer la conexión con una base de datos PostgreSQL
-    y ejecutar consultas SQL para obtener el estado de los asientos en las combis.
-     """
-     conexion = bd.connect(
+        """
+       Se Establece la conexión con la base de datos
+       El código utiliza la biblioteca psycopg2 para establecer la conexión con una base de datos PostgreSQL
+       y ejecutar consultas SQL para obtener el estado de los asientos en las combis.
+        """
+        conexion = bd.connect(
             user='postgres',
             password='admin',
             host='127.0.0.1',
             port='5432',
             database='viajes_bd'
-     )
-     try:
+        )
+        try:
             conexion.autocommit = False
             cursor = conexion.cursor()
             sentencia = "SELECT estado, id_asiento FROM combi1 ORDER BY id_asiento ASC;"
@@ -218,7 +221,7 @@ class ServicioCombiSeleccion:
                     return True
         return False
 
-    #Método para la selección de asiento dirigido a la base de datos viajes_db(combi1)
+    # Método para la selección de asiento dirigido a la base de datos viajes_db(combi1)
     def seleccionarAsiento1BD(self, seleccion):
         conexion = bd.connect(
             user='postgres',
@@ -305,8 +308,9 @@ class ServicioCombiSeleccion:
     def retornaCombi(self):
         return self.seleccion.Combi
 
-#######################################################################
-#######################################################################
+
+##################################################################################################
+##################################################################################################
 
 """
         Clase que contiene los atributos para poder instanciar un objeto de tipo Viaje.
@@ -315,6 +319,7 @@ class ServicioCombiSeleccion:
         - precio: se ingresará el valor del  precio según el destino.
         - adicional: se ingresará el valor del los adicionales que se agreguen al viaje.
         """
+
 
 class Viaje:
     def __init__(self, destino, precio, adicionales):
@@ -325,6 +330,7 @@ class Viaje:
     """
        Getter and Setter
     """
+
     @property
     def Destino(self):
         return self._destino
@@ -352,62 +358,112 @@ class Viaje:
     def __str__(self):
         return (self._precio + self._adicionales)
 
-############################################################
-############################################################
+
+##################################################################################################
+##################################################################################################
 """
         Clase que contiene los atributos para poder instanciar un objeto de tipo servicios.
         Atributos:
         - Adicional: se podrá elegir que servicio adicional se desea
         - mostrarresultado: se mostrará el costo total del viaje sumado con el servicio adicional
 """
+
+
 class Servicios:
     viaje = Viaje('', 0, 0)
     servicioCombi = ServicioCombiSeleccion()
 
-   def nombreEmpresa(self): """Esto muestra Logo del proyecto"""
-    import pyfiglet
-    print(pyfiglet.figlet_format("Hello World \n TOURS"))
+    def nombreEmpresa(self):
+        print(
+            " ----    ----    --------    ----        ----          --------         -----    -----    -----     --------     ---------     ----       ----- ")
+        print(
+            " ----    ----    --------    ----        ----         ----------         -----   -----   -----     ----------    ----------    ----       --------")
+        print(
+            " ----    ----    --------    ----        ----         ----------          -----  -----  -----      ----------    ----  ----    ----       ---------")
+        print(
+            " ----    ----    ----        ----        ----         ----------           ----- ----- -----       ----------    ---    ---    ----       ----------")
+        print(
+            " ------------    ----        ----        ----         ---    ---            ---------------        ---    ---    ---    ---    ----       ---    ---")
+        print(
+            " ------------    --------    ----        ----         ---    ---             -------------         ---    ---    ----  ---     ----       ---    ---")
+        print(
+            " ------------    --------    ----        ----         ---    ---              -----------          ---    ---    --------      ----       ---    ---")
+        print(
+            " ------------    --------    ----        ----         ---    ---               ---------           ---    ---    ---------     ----       ---    ---")
+        print(
+            " ------------    ----        ----        ----         ---    ---                -------            ---    ---    ---  -----    ----       ---    ---")
+        print(
+            " ----    ----    ----        ----        ----         ----------                 -----             ----------    ---   ----    ----       ----------")
+        print(
+            " ----    ----    --------    --------    --------     ----------                  ---              ----------    ---   ----    --------   ---------")
+        print(
+            " ----    ----    --------    --------    --------     ----------                   -               ----------    ---   ----    --------   --------")
+        print(
+            " ----    ----    --------    --------    --------      --------                    -                --------     ---   ----    --------   -----")
+        print("\n")
+        print("\n")
+        print("\n")
+        print(
+            "                                                **********   **********   ***    ***   **********   **********   ")
+        print(
+            "                                                **********   **********   ***    ***   ****  ****   ****         ")
+        print(
+            "                                                   ****      ***    ***   ***    ***   ****  ****   **********   ")
+        print(
+            "                                                   ****      ***    ***   ***    ***   **********   **********   ")
+        print(
+            "                                                   ****      **********   **********   ***  *****         ****   ")
+        print(
+            "                                                   ****      **********   **********   ***  *****   **********   ")
 
-   def espacio(self):  """Genera espacio entre el logo y el siguiente método"""
+
+
+    def espacio(self):  """Genera espacio entre el logo y el siguiente método"""
+
+
     print("\n\n\n\n")
 
-  """Se consulta si se desea un Servicio Adicional"""
-   def servicioAdicional(self, viaje):
-    opcion = 0
-    while True:
-        print("¿Desea agregar algún servicio adicional?")
-        print("                   1-SI                 ")
-        print("                   2-NO                 ")
-        opcion = int(input()) """El usuario deberá elegir una opción"""
-        if opcion == 1:
-            while True:
-                print("       Seleccione una opción: ")
-                print("1 - Búsqueda por alojamiento: $350")
-                print("2 - Vianda en destino: $500")
-                print("3 - Pack Souvenir: $850")
-                print("4 - No deseo ningún adicional.")
+    """Se consulta si se desea un Servicio Adicional"""
 
-                opcion = int(input())
-                if opcion == 1:
-                    self.viaje.Adicionales = self.viaje.Adicionales + 350
-                    break
-                elif opcion == 2:
-                    self.viaje.Adicionales = self.viaje.Adicionales + 500
-                    break
-                elif opcion == 3:
-                    self.viaje.Adicionales = self.viaje.Adicionales + 850
-                    break
-                elif opcion == 4:
-                    continue
-                else:
-                    print("La opción ingresada es incorrecta.")
-        elif opcion != 1 and opcion != 2:
-            print("Los datos ingresados son incorrectos.")
-            print("Por favor, intente nuevamente.")
-        else:
-            break
 
-         """ Mostrar pantalla: mostrará los resultados por pantalla"""
+    def servicioAdicional(self, viaje):
+        opcion = 0
+        while True:
+            print("¿Desea agregar algún servicio adicional?")
+            print("                   1-SI                 ")
+            print("                   2-NO                 ")
+            opcion = int(input())
+            """El usuario deberá elegir una opción"""
+            if opcion == 1:
+                while True:
+                    print("       Seleccione una opción: ")
+                    print("1 - Búsqueda por alojamiento: $350")
+                    print("2 - Vianda en destino: $500")
+                    print("3 - Pack Souvenir: $850")
+                    print("4 - No deseo ningún adicional.")
+
+                    opcion = int(input())
+                    if opcion == 1:
+                        self.viaje.Adicionales = self.viaje.Adicionales + 350
+                        break
+                    elif opcion == 2:
+                        self.viaje.Adicionales = self.viaje.Adicionales + 500
+                        break
+                    elif opcion == 3:
+                        self.viaje.Adicionales = self.viaje.Adicionales + 850
+                        break
+                    elif opcion == 4:
+                        continue
+                    else:
+                        print("La opción ingresada es incorrecta.")
+            elif opcion != 1 and opcion != 2:
+                print("Los datos ingresados son incorrectos.")
+                print("Por favor, intente nuevamente.")
+            else:
+                break
+
+        """ Mostrar pantalla: mostrará los resultados por pantalla"""
+
     def mostrarResultado(self, viaje):
         suma = self.viaje.Precio + self.viaje.Adicionales
         print("************************************************")
@@ -419,19 +475,19 @@ class Servicios:
         print("************************************************")
         print(f"El valor total del viaje es: $" + str(suma))
 
-
     '''Damos inicio a la confirmación de compra del pasaje por porte del usuario o la opcion de volver atras, con el método comprarBoleto'''
+
     def comprarBoleto(self, viaje):
         self.espacio()
         print("Bienvenido al sistema de compra de pasajes")
         print(" ")
-    # Usuario define si compra boleto o no
+        # Usuario define si compra boleto o no
         opcion = 0
         while opcion != 1 and opcion != 2:
             print("1_ Comprar Boleto")
             print("2_ Volver")
             opcion = int(input())
-    #En caso de confirmar la compra
+        # En caso de confirmar la compra
         if opcion == 1:
             self.servicioCombi.seleccionFinal()
         else:
@@ -446,7 +502,7 @@ class Servicios:
         elif self.viaje.Destino == "El Sosneado":
             self.mostrarPantalla(self.viaje.Destino, 8, 11, 19, "Julio", 40, self.servicioCombi.retornaAsiento())  ####
 
-    #Imprime por pantalla los datos que contiene el boleto de compra
+    # Imprime por pantalla los datos que contiene el boleto de compra
     def mostrarPantalla(self, viaje, horarioSalida, horarioLlegada, dia, mes, duracion, serrvicioCombi):
         print("")
         print("")
@@ -467,7 +523,6 @@ class Servicios:
         print("\t\t\t\t   [Duración Viaje:" + str(duracion) + " min.] ")
         print("\t\t\t\t     Precio: $ " + str(self.viaje.Precio + self.viaje.Adicionales))
         print("")
-
 
     def metodoDePago(self):
         opcionDePago = 0
@@ -503,11 +558,9 @@ class Servicios:
         self.espacio()
         self.compraExitosa()
 
-
     def opcionTarjeta(self):  # Método para que el usuario ingrese los datos de su tarjeta para realizar el pago
         titular = ""
-        numeroTarjeta = ""
-        numeroCV = 0
+
         # Se solicitan los datos
         print("Ingrese el nombre completo del titular de la tarjeta: ")
         while len(titular) < 3:
@@ -522,17 +575,16 @@ class Servicios:
         print("Sus datos son: Titular:", titular + ", Número de tarjeta:", numeroTarjeta + ", CV de la tarjeta:",
               numeroCV)
 
-
     def compraExitosa(self):  # Mensaje de confirmación de compra
         print("Tú compra fue un éxito.")
         print("Esperamos disfrutes tú viaje.")
 
-###########
-    #Este metodo permite al usuario seleccionar un destino turistico
-    #Metodo dentro de la clase Servicios
+    ###########
+    # Este metodo permite al usuario seleccionar un destino turistico
+    # Metodo dentro de la clase Servicios
     def definirDestino(self):
-        #Se utiliza un bucle While True para mantener al usuario en el menù
-        #hasta que ingrese una opcion valida
+        # Se utiliza un bucle While True para mantener al usuario en el menù
+        # hasta que ingrese una opcion valida
         while True:
             print("-----------------------------------------------------------")
             print("|              DESTINOS TURISTICOS SAN RAFAEL              |")
@@ -545,18 +597,18 @@ class Servicios:
             print("|            |          Diamante             |             |")
             print("|     4      |         El Sosneado           |    4300     |")
             print("-----------------------------------------------------------")
-        #menù de Destinos turisticos
+            # menù de Destinos turisticos
             num = int(input("Seleccione el número correspondiente al destino deseado: "))
-            #seleccion de el número que elige el usuario.
+            # seleccion de el número que elige el usuario.
             if num == 1:
                 self.viaje.Destino = "Valle Grande"
                 self.viaje.Precio = 2800
                 print("El destino seleccionado es:", self.viaje.Destino)
                 print("Precio = $", self.viaje.Precio)
                 self.espacio()
-                self.servicioAdicional(viaje)
+                self.servicioAdicional(self.viaje)
                 self.espacio()
-                self.mostrarResultado(viaje)
+                self.mostrarResultado(self.viaje)
                 break
             elif num == 2:
                 self.viaje.Destino = "Los Reyunos"
@@ -564,9 +616,9 @@ class Servicios:
                 print("El destino seleccionado es:", self.viaje.Destino)
                 print("Precio = $", self.viaje.Precio)
                 self.espacio()
-                self.servicioAdicional(viaje)
+                self.servicioAdicional(self.viaje)
                 self.espacio()
-                self.mostrarResultado(viaje)
+                self.mostrarResultado(self.viaje)
                 break
             elif num == 3:
                 self.viaje.Destino = "El Nuhuil y Las Salinas del Diamante"
@@ -574,9 +626,9 @@ class Servicios:
                 print("El destino seleccionado es:", self.viaje.Destino)
                 print("Precio = $", self.viaje.Precio)
                 self.espacio()
-                self.servicioAdicional(viaje)
+                self.servicioAdicional(self.viaje)
                 self.espacio()
-                self.mostrarResultado(viaje)
+                self.mostrarResultado(self.viaje)
                 break
             elif num == 4:
                 self.viaje.Destino = "El Sosneado"
@@ -584,23 +636,23 @@ class Servicios:
                 print("El destino seleccionado es:", self.viaje.Destino)
                 print("Precio = $", self.viaje.Precio)
                 self.espacio()
-                self.servicioAdicional(viaje)
+                self.servicioAdicional(self.viaje)
                 self.espacio()
-                self.mostrarResultado(viaje)
-                #caso que elija una de las 4 opciones mostrara el resultado
-                #del destino seleccionado y el precio.
+                self.mostrarResultado(self.viaje)
+                # caso que elija una de las 4 opciones mostrara el resultado
+                # del destino seleccionado y el precio.
                 break
             else:
                 print("Los datos ingresados son incorrectos")
-            #Fin de la Estructura Condicional
+            # Fin de la Estructura Condicional
         # return viaje
-        self.comprarBoleto(viaje)
+        self.comprarBoleto(self.viaje)
         self.espacio()
         self.metodoDePago()
 
 
 
-viaje = Servicios()
-viaje.nombreEmpresa()
-viaje.espacio()
-viaje.definirDestino()
+eleccion = Servicios()
+eleccion.nombreEmpresa()
+eleccion.espacio()
+eleccion.definirDestino()
