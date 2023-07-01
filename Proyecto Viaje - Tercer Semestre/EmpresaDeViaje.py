@@ -68,65 +68,65 @@ class ServicioCombiSeleccion:
     seleccion = CombiSeleccion(0,0)
 
     def generarMatrizCombi1(self):
-     """
-    Se Establece la conexión con la base de datos
-    El código utiliza la biblioteca psycopg2 para establecer la conexión con una base de datos PostgreSQL
-    y ejecutar consultas SQL para obtener el estado de los asientos en las combis.
-     """
-     conexion = bd.connect(
-            user='postgres',
-            password='admin',
-            host='127.0.0.1',
-            port='5432',
-            database='viajes_bd'
-     )
-     try:
-            conexion.autocommit = False
-            cursor = conexion.cursor()
-            sentencia = "SELECT estado, id_asiento FROM combi1 ORDER BY id_asiento ASC;"
-            cursor.execute(sentencia)
-            resultados = cursor.fetchall()
 
-            # Generar la matriz según los valores de la columna "estado"
-            matriz = []
-            fila_actual = []
-            contador_columnas = 0
+    #Se Establece la conexión con la base de datos
+    #El código utiliza la biblioteca psycopg2 para establecer la conexión con una base de datos PostgreSQL
+    #y ejecutar consultas SQL para obtener el estado de los asientos en las combis.
 
-            for fila in resultados:
-                estado = fila[0]
-                id_asiento = int(fila[1])  # Convertir a entero
+         conexion = bd.connect(
+                user='postgres',
+                password='admin',
+                host='127.0.0.1',
+                port='5432',
+                database='viajes_bd'
+         )
+         try:
+                conexion.autocommit = False
+                cursor = conexion.cursor()
+                sentencia = "SELECT estado, id_asiento FROM combi1 ORDER BY id_asiento ASC;"
+                cursor.execute(sentencia)
+                resultados = cursor.fetchall()
 
-                if estado == "ocupado":
-                    fila_actual.append("x")
-                elif estado == "desocupado":
-                    fila_actual.append(str(id_asiento))
+                # Generar la matriz según los valores de la columna "estado"
+                matriz = []
+                fila_actual = []
+                contador_columnas = 0
 
-                contador_columnas += 1
+                for fila in resultados:
+                    estado = fila[0]
+                    id_asiento = int(fila[1])  # Convertir a entero
 
-                if contador_columnas == 3:
-                    matriz.append(fila_actual)
-                    fila_actual = []
-                    contador_columnas = 0
+                    if estado == "ocupado":
+                        fila_actual.append("x")
+                    elif estado == "desocupado":
+                        fila_actual.append(str(id_asiento))
 
-            # Imprimir la matriz
-            print("Combi 1:")
-            for fila in matriz:
-                print(fila)
-            self.matriz = matriz
+                    contador_columnas += 1
 
-            conexion.commit()  # Hacemos el commit manualmente
-            print('------------------')
-        except Exception as e:
-            conexion.rollback()
-            print(f'Ocurrio un error, se hizo un rollback: {e}')
-        finally:
-            conexion.close()
+                    if contador_columnas == 3:
+                        matriz.append(fila_actual)
+                        fila_actual = []
+                        contador_columnas = 0
+
+                # Imprimir la matriz
+                print("Combi 1:")
+                for fila in matriz:
+                    print(fila)
+                self.matriz = matriz
+
+                conexion.commit()  # Hacemos el commit manualmente
+                print('------------------')
+         except Exception as e:
+                conexion.rollback()
+                print(f'Ocurrio un error, se hizo un rollback: {e}')
+         finally:
+                conexion.close()
 
     def generarMatrizCombi2(self):
         # Establecer la conexión con la base de datos
-        """
-        Genera y muestra la matriz de asientos para la combi 1 a partir de los datos en la base de datos.
-        """
+
+        #Genera y muestra la matriz de asientos para la combi 1 a partir de los datos en la base de datos.
+
         conexion = bd.connect(
             user='postgres',
             password='admin',
@@ -364,21 +364,21 @@ class Servicios:
     viaje = Viaje('', 0, 0)
     servicioCombi = ServicioCombiSeleccion()
 
-   def nombreEmpresa(self): """Esto muestra Logo del proyecto"""
+   def nombreEmpresa(self): #Esto muestra Logo del proyecto
     import pyfiglet
     print(pyfiglet.figlet_format("Hello World \n TOURS"))
 
-   def espacio(self):  """Genera espacio entre el logo y el siguiente método"""
+   def espacio(self):  #Genera espacio entre el logo y el siguiente método
     print("\n\n\n\n")
 
-  """Se consulta si se desea un Servicio Adicional"""
+   #Se consulta si se desea un Servicio Adicional
    def servicioAdicional(self, viaje):
     opcion = 0
     while True:
         print("¿Desea agregar algún servicio adicional?")
         print("                   1-SI                 ")
         print("                   2-NO                 ")
-        opcion = int(input()) """El usuario deberá elegir una opción"""
+        opcion = int(input()) #El usuario deberá elegir una opción"""
         if opcion == 1:
             while True:
                 print("       Seleccione una opción: ")
@@ -407,7 +407,7 @@ class Servicios:
         else:
             break
 
-         """ Mostrar pantalla: mostrará los resultados por pantalla"""
+         # Mostrar pantalla: mostrará los resultados por pantalla"""
     def mostrarResultado(self, viaje):
         suma = self.viaje.Precio + self.viaje.Adicionales
         print("************************************************")
@@ -420,7 +420,8 @@ class Servicios:
         print(f"El valor total del viaje es: $" + str(suma))
 
 
-    '''Damos inicio a la confirmación de compra del pasaje por porte del usuario o la opcion de volver atras, con el método comprarBoleto'''
+    #Damos inicio a la confirmación de compra del pasaje por porte del usuario
+    # o la opcion de volver atras, con el método comprarBoleto
     def comprarBoleto(self, viaje):
         self.espacio()
         print("Bienvenido al sistema de compra de pasajes")
